@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bangladeshi Home Kitchen</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff8f0;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #8b0000;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    .badge {
+      background: #2e7d32;
+      color: white;
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 20px;
+      margin: 5px;
+      font-size: 14px;
+    }
+    .container {
+      padding: 20px;
+    }
+    .item {
+      background: white;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      padding: 15px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .item img {
+      width: 100%;
+      border-radius: 10px;
+    }
+    .price {
+      color: green;
+      font-weight: bold;
+    }
+    form {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    input, textarea, button {
+      width: 100%;
+      margin-top: 10px;
+      padding: 10px;
+      font-size: 16px;
+    }
+    button {
+      background: green;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    footer {
+      text-align: center;
+      padding: 15px;
+      background: #8b0000;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Bangladeshi Home Kitchen 🇧🇩</h1>
+  <p>✅ Free Delivery</p>
+  <div class="badge">💵 Cash on Delivery</div>
+  <div class="badge">💳 Card on Delivery</div>
+</header>
+
+<div class="container">
+
+  <div class="item">
+    <h2>Biryani</h2>
+    <img src="https://images.unsplash.com/photo-1600628422019-6c54b86f91c8?auto=format&fit=crop&w=800&q=80">
+    <p class="price">15 AED</p>
+  </div>
+
+  <div class="item">
+    <h2>Butter Chicken</h2>
+    <img src="https://images.unsplash.com/photo-1628294895950-9805252327bc?auto=format&fit=crop&w=800&q=80">
+    <p class="price">20 AED</p>
+  </div>
+
+  <div class="item">
+    <h2>Chicken Korma</h2>
+    <img src="https://images.unsplash.com/photo-1701579231300-0d17c6605c45?auto=format&fit=crop&w=800&q=80">
+    <p class="price">20 AED</p>
+  </div>
+
+  <div class="item">
+    <h2>Fish Fry</h2>
+    <img src="https://images.unsplash.com/photo-1628294895750-5df7c63cce3c?auto=format&fit=crop&w=800&q=80">
+    <p class="price">12 AED</p>
+  </div>
+
+  <div class="item">
+    <h2>Fish Curry</h2>
+    <img src="https://images.unsplash.com/photo-1589302168068-964664d93dc0?auto=format&fit=crop&w=800&q=80">
+    <p class="price">12 AED</p>
+  </div>
+
+  <div class="item">
+    <h2>Iced Coffee</h2>
+    <img src="https://images.unsplash.com/photo-1590080876554-1e831fb2a8b0?auto=format&fit=crop&w=800&q=80">
+    <p class="price">10 AED</p>
+  </div>
+
+  <div class="item">
+    <h2>Small Cake</h2>
+    <img src="https://images.unsplash.com/photo-1606890675085-7c6adf47a1e4?auto=format&fit=crop&w=800&q=80">
+    <p class="price">25 AED</p>
+  </div>
+
+  <div class="item">
+    <h2>Cold Drinks</h2>
+    <img src="https://images.unsplash.com/photo-1622483767028-3f66f32ccf59?auto=format&fit=crop&w=800&q=80">
+    <p>Pepsi, Cola, Sprite</p>
+    <p class="price">3.50 AED each</p>
+  </div>
+
+  <h2>Order Now 📦</h2>
+  <form onsubmit="sendOrder(); return false;">
+    <input id="name" placeholder="Your Name" required>
+    <input id="phone" placeholder="Phone Number" required>
+    <textarea id="address" placeholder="Delivery Address" required></textarea>
+    <textarea id="order" placeholder="Your Order + Payment Method" required></textarea>
+    <button type="submit">Send Order on WhatsApp</button>
+  </form>
+
+</div>
+
+<footer>
+  <p>📞 WhatsApp Orders: 0566514365</p>
+  <p>✅ Cash on Delivery | ✅ Card on Delivery</p>
+</footer>
+
+<script>
+function sendOrder() {
+  let name = document.getElementById("name").value;
+  let phone = document.getElementById("phone").value;
+  let address = document.getElementById("address").value;
+  let order = document.getElementById("order").value;
+
+  let message =
+    "🍽️ New Order%0A%0A" +
+    "Name: " + name + "%0A" +
+    "Phone: " + phone + "%0A" +
+    "Address: " + address + "%0A%0A" +
+    "Order & Payment:%0A" + order;
+
+  window.open("https://wa.me/971566514365?text=" + message, "_blank");
+}
+</script>
+
+</body>
+</html>
