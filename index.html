@@ -5,40 +5,35 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Aisha's Kitchen</title>
 <style>
-body{font-family:'Arial',sans-serif;margin:0;background:#fff5ee;color:#333;}
-header{background:#d84a2f;color:white;padding:15px;text-align:center;position:relative;box-shadow:0 4px 6px rgba(0,0,0,0.1);}
+body{font-family:'Arial',sans-serif;margin:0;background:#fff8f0;color:#333;}
+header{background:#7a1f1f;color:white;padding:15px;text-align:center;position:relative;}
 header img{height:50px;margin-bottom:5px;}
-#status{position:absolute;top:18px;right:20px;font-size:14px;font-weight:bold;}
-header h1{margin:0;font-size:28px;font-weight:bold;}
-header p{margin:5px;font-size:14px;}
-#banner{width:100%;height:180px;object-fit:cover;display:block;border-radius:6px;}
-.menu{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;padding:20px;}
-.card{background:#fff3f0;border-radius:12px;padding:10px;text-align:center;box-shadow:0 4px 12px rgba(0,0,0,.1);transition:transform 0.25s,box-shadow 0.25s;}
-.card:hover{transform:translateY(-6px);box-shadow:0 8px 20px rgba(0,0,0,.15);}
-.card img{width:100%;height:150px;object-fit:cover;border-radius:10px;margin-bottom:8px;}
-.card button{background:#d84a2f;color:white;border:none;padding:10px 14px;border-radius:6px;cursor:pointer;font-weight:bold;}
-.card button:hover{background:#b53d25;}
-#cartBtn{position:fixed;bottom:18px;right:18px;background:#d84a2f;color:white;padding:14px 20px;border-radius:30px;font-weight:bold;box-shadow:0 4px 12px rgba(0,0,0,.2);cursor:pointer;z-index:100;transition:transform 0.2s;}
-#cartBtn:hover{transform:scale(1.1);}
-#cartPage{display:none;padding:25px;max-width:520px;margin:auto;background:#fff3f0;border-radius:12px;box-shadow:0 6px 16px rgba(0,0,0,.2);}
-.cart-item{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;font-weight:bold;}
-.qty button{padding:4px 8px;margin:0 5px;border-radius:4px;cursor:pointer;background:#d84a2f;color:white;border:none;}
-input,select,textarea{width:100%;padding:10px;margin-bottom:12px;border-radius:6px;border:1px solid #ccc;}
-.order-btn{background:#1e7f2d;color:white;border:none;padding:12px;width:100%;border-radius:8px;font-size:16px;cursor:pointer;font-weight:bold;}
-.order-btn:hover{background:#176126;}
-.back{text-align:center;margin-bottom:15px;color:#d84a2f;cursor:pointer;font-weight:bold;}
+#status{position:absolute;top:15px;right:20px;font-size:14px;font-weight:bold;}
+#banner{width:100%;height:180px;object-fit:cover;display:block;}
+.menu{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;padding:20px;}
+.card{background:#fff;border-radius:12px;padding:10px;text-align:center;box-shadow:0 2px 6px rgba(0,0,0,.1);transition:transform 0.2s;}
+.card:hover{transform:translateY(-5px);}
+.card img{width:100%;height:150px;object-fit:cover;border-radius:10px;}
+.card button{background:#7a1f1f;color:white;border:none;padding:8px 12px;border-radius:6px;cursor:pointer;}
+#cartBtn{position:fixed;bottom:15px;right:15px;background:#7a1f1f;color:white;padding:12px 18px;border-radius:30px;font-weight:bold;box-shadow:0 4px 8px rgba(0,0,0,.2);cursor:pointer;z-index:100;}
+#cartPage{display:none;padding:20px;max-width:520px;margin:auto;background:#fff;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.2);}
+.cart-item{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
+.qty button{padding:2px 6px;margin:0 4px;}
+input,select,textarea{width:100%;padding:8px;margin-bottom:10px;border-radius:6px;border:1px solid #ccc;}
+.order-btn{background:#1e7f2d;color:white;border:none;padding:12px;width:100%;border-radius:8px;font-size:16px;cursor:pointer;}
+.back{text-align:center;margin-bottom:15px;color:#7a1f1f;cursor:pointer;}
 </style>
 </head>
 <body>
 
 <header>
-<img src="https://images.unsplash.com/photo-1598511726715-3fc818dbf1a8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cmVzdGF1cmFudCUyMGxvZ298&ixlib=rb-4.0.3&q=80&w=100" alt="Logo">
+<img src="https://source.unsplash.com/100x100/?restaurant,logo&sig=101" alt="Aisha's Kitchen Logo">
 <h1>Aisha’s Kitchen</h1>
 <p>✅ Free Delivery • ⏱ 30–45 Minutes</p>
 <div id="status">Open</div>
 </header>
 
-<img id="banner" src="https://images.unsplash.com/photo-1617196030071-bcaef4f25b99?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200" alt="Banner">
+<img id="banner" src="https://source.unsplash.com/1200x400/?biryani,chicken,food&sig=202" alt="Banner">
 
 <div class="menu" id="menu"></div>
 
@@ -62,22 +57,22 @@ input,select,textarea{width:100%;padding:10px;margin-bottom:12px;border-radius:6
 
 <script>
 const menu=[
-{name:"Chicken Biryani",price:15,img:"https://images.unsplash.com/photo-1604908177520-2c0b4f22f58e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400"},
-{name:"Mutton Biryani",price:22.5,img:"https://images.unsplash.com/photo-1600891964599-f61ba0e24092?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400"},
-{name:"Duck Curry",price:25,img:"https://images.unsplash.com/photo-1604908177683-91d2527387a3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400"},
-{name:"Naan",price:2,img:"https://images.unsplash.com/photo-1606755962778-cc1e7a47e9eb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400"},
-{name:"Pepsi",price:3.5,img:"https://images.unsplash.com/photo-1610484820345-6e33c9cfe205?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400"},
-{name:"Mirinda",price:3.5,img:"https://images.unsplash.com/photo-1587031441230-5b85f82d9e4e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400"},
-{name:"Mountain Dew",price:3.5,img:"https://images.unsplash.com/photo-1600650778726-8b024a8880b8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400"},
-{name:"Coca Cola",price:3.5,img:"https://images.unsplash.com/photo-1598511725582-bdb64775bebe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400"},
-{name:"Sprite",price:3.5,img:"https://images.unsplash.com/photo-1600172453708-cbf2bb0f3a0a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400"},
-{name:"Butter Chicken",price:21,img:"https://images.unsplash.com/photo-1604908177605-d38f3b32c331?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400"},
-{name:"Fish Fry",price:12,img:"https://images.unsplash.com/photo-1604908177754-50782beae0de?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400"},
-{name:"Fish Curry",price:13,img:"https://images.unsplash.com/photo-1604908177720-cd7cbbf143cb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400"},
-{name:"Fried Chicken & Fries",price:18,img:"https://images.unsplash.com/photo-1604908177700-6f372c7897b7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400"},
-{name:"Tandoori Chicken Half",price:22,img:"https://images.unsplash.com/photo-1604908177695-b2a09fdd7fc7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400"},
-{name:"Tandoori Chicken Full",price:40,img:"https://images.unsplash.com/photo-1604908177678-8e3c6e2427cf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400"},
-{name:"White Rice",price:4,img:"https://images.unsplash.com/photo-1604908177690-bb1e5d9a0ee8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400"}
+{name:"Chicken Biryani",price:15,img:"https://source.unsplash.com/400x300/?chicken,biryani&sig=1"},
+{name:"Mutton Biryani",price:22.5,img:"https://source.unsplash.com/400x300/?mutton,biryani&sig=2"},
+{name:"Duck Curry",price:25,img:"https://source.unsplash.com/400x300/?duck,curry&sig=3"},
+{name:"Naan",price:2,img:"https://source.unsplash.com/400x300/?naan,bread&sig=4"},
+{name:"Pepsi",price:3.5,img:"https://source.unsplash.com/400x300/?pepsi&sig=5"},
+{name:"Mirinda",price:3.5,img:"https://source.unsplash.com/400x300/?mirinda,softdrink&sig=6"},
+{name:"Mountain Dew",price:3.5,img:"https://source.unsplash.com/400x300/?mountaindew,softdrink&sig=7"},
+{name:"Coca Cola",price:3.5,img:"https://source.unsplash.com/400x300/?coca,cola&sig=8"},
+{name:"Sprite",price:3.5,img:"https://source.unsplash.com/400x300/?sprite,drink&sig=9"},
+{name:"Butter Chicken",price:21,img:"https://source.unsplash.com/400x300/?butter,chicken&sig=10"},
+{name:"Fish Fry",price:12,img:"https://source.unsplash.com/400x300/?fish,fry&sig=11"},
+{name:"Fish Curry",price:13,img:"https://source.unsplash.com/400x300/?fish,curry&sig=12"},
+{name:"Fried Chicken & Fries",price:18,img:"https://source.unsplash.com/400x300/?fried,chicken&sig=13"},
+{name:"Tandoori Chicken Half",price:22,img:"https://source.unsplash.com/400x300/?tandoori,chicken&sig=14"},
+{name:"Tandoori Chicken Full",price:40,img:"https://source.unsplash.com/400x300/?tandoori&sig=15"},
+{name:"White Rice",price:4,img:"https://source.unsplash.com/400x300/?white,rice&sig=16"}
 ];
 
 let cart=[];
