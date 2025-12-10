@@ -1,116 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Bangladeshi Home Kitchen</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body { font-family: Arial, sans-serif; background: #fff8f0; margin: 0; padding: 0; }
-    header { background: #8b0000; color: white; padding: 20px; text-align: center; }
-    .badge { background: #2e7d32; color: white; display: inline-block; padding: 6px 12px; border-radius: 20px; margin: 5px; font-size: 14px; }
-    .container { padding: 20px; }
-    .item { background: white; border-radius: 10px; margin-bottom: 20px; padding: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-    .item img { width: 100%; border-radius: 10px; }
-    .price { color: green; font-weight: bold; }
-    form { background: white; padding: 20px; border-radius: 10px; }
-    input, textarea, button { width: 100%; margin-top: 10px; padding: 10px; font-size: 16px; }
-    button { background: green; color: white; border: none; cursor: pointer; }
-    footer { text-align: center; padding: 15px; background: #8b0000; color: white; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aisha's Kitchen</title>
+<style>
+body { font-family: Arial, sans-serif; margin:0; background:#fffaf0; color:#333;}
+header {background:#8b0000; color:white; padding:20px; display:flex; justify-content:space-between; align-items:center;}
+header h1 {margin:0;font-size:28px;}
+nav a {color:white; margin-left:15px; text-decoration:none; font-weight:bold;}
+h2 {text-align:center; margin-top:20px;}
+.menu-items {display:flex; flex-wrap:wrap; justify-content:center; gap:20px; padding:20px;}
+.menu-item {border:1px solid #ddd; border-radius:10px; width:200px; padding:10px; background:#fff8f0; text-align:center;}
+.menu-item img {width:100%; height:150px; border-radius:10px; object-fit:cover;}
+.menu-item button {margin-top:10px; padding:8px 12px; background:#8b0000; color:white; border:none; border-radius:5px; cursor:pointer;}
+.menu-item button:hover {background:#a52a2a;}
+#cart {padding:20px; max-width:600px; margin:auto;}
+.cart-items {margin-bottom:10px;}
+.cart-item {display:flex; justify-content:space-between; margin-bottom:5px;}
+.checkout-form input, .checkout-form select {display:block; width:100%; margin-bottom:10px; padding:8px; border-radius:5px; border:1px solid #ccc;}
+.checkout-form button {width:100%; padding:10px; background:#8b0000; color:white; border:none; border-radius:5px; cursor:pointer;}
+.checkout-form button:hover {background:#a52a2a;}
+</style>
 </head>
 <body>
-
 <header>
-  <h1>Bangladeshi Home Kitchen 🇧🇩</h1>
-  <p>✅ Free Delivery</p>
-  <div class="badge">💵 Cash on Delivery</div>
-  <div class="badge">💳 Card on Delivery</div>
+  <h1>Aisha's Kitchen</h1>
+  <nav><a href="#menu">Menu</a><a href="#cart">Cart</a></nav>
 </header>
 
-<div class="container">
+<section id="menu">
+<h2>Our Menu</h2>
+<div class="menu-items" id="menuContainer"></div>
+</section>
 
-  <div class="item">
-    <h2>Biryani</h2>
-    <img src="https://images.unsplash.com/photo-1600628422019-6c54b86f91c8?auto=format&fit=crop&w=800&q=80">
-    <p class="price">15 AED</p>
-  </div>
-
-  <div class="item">
-    <h2>Butter Chicken</h2>
-    <img src="https://images.unsplash.com/photo-1628294895950-9805252327bc?auto=format&fit=crop&w=800&q=80">
-    <p class="price">20 AED</p>
-  </div>
-
-  <div class="item">
-    <h2>Chicken Korma</h2>
-    <img src="https://images.unsplash.com/photo-1701579231300-0d17c6605c45?auto=format&fit=crop&w=800&q=80">
-    <p class="price">20 AED</p>
-  </div>
-
-  <div class="item">
-    <h2>Fish Fry</h2>
-    <img src="https://images.unsplash.com/photo-1628294895750-5df7c63cce3c?auto=format&fit=crop&w=800&q=80">
-    <p class="price">12 AED</p>
-  </div>
-
-  <div class="item">
-    <h2>Fish Curry</h2>
-    <img src="https://images.unsplash.com/photo-1589302168068-964664d93dc0?auto=format&fit=crop&w=800&q=80">
-    <p class="price">12 AED</p>
-  </div>
-
-  <div class="item">
-    <h2>Iced Coffee</h2>
-    <img src="https://images.unsplash.com/photo-1590080876554-1e831fb2a8b0?auto=format&fit=crop&w=800&q=80">
-    <p class="price">10 AED</p>
-  </div>
-
-  <div class="item">
-    <h2>Small Cake</h2>
-    <img src="https://images.unsplash.com/photo-1606890675085-7c6adf47a1e4?auto=format&fit=crop&w=800&q=80">
-    <p class="price">25 AED</p>
-  </div>
-
-  <div class="item">
-    <h2>Cold Drinks</h2>
-    <img src="https://images.unsplash.com/photo-1622483767028-3f66f32ccf59?auto=format&fit=crop&w=800&q=80">
-    <p>Pepsi, Cola, Sprite</p>
-    <p class="price">3.50 AED each</p>
-  </div>
-
-  <h2>Order Now 📦</h2>
-  <form onsubmit="sendOrder(); return false;">
-    <input id="name" placeholder="Your Name" required>
-    <input id="phone" placeholder="Phone Number" required>
-    <textarea id="address" placeholder="Delivery Address" required></textarea>
-    <textarea id="order" placeholder="Your Order + Payment Method" required></textarea>
-    <button type="submit">Send Order on WhatsApp</button>
-  </form>
-
+<section id="cart">
+<h2>Your Cart</h2>
+<div class="cart-items" id="cartItems"></div>
+<div class="cart-total">Total: AED <span id="total">0</span></div>
+<div class="checkout-form">
+<input type="text" id="name" placeholder="Your Name">
+<input type="text" id="address" placeholder="Your Address">
+<input type="text" id="phone" placeholder="Your Phone">
+<select id="payment">
+  <option value="Cash on Delivery">Cash on Delivery</option>
+  <option value="Card on Delivery">Card on Delivery</option>
+</select>
+<button id="placeOrder">Place Order</button>
 </div>
-
-<footer>
-  <p>📞 WhatsApp Orders: 0566514365</p>
-  <p>✅ Cash on Delivery | ✅ Card on Delivery</p>
-</footer>
+</section>
 
 <script>
-function sendOrder() {
-  let name = document.getElementById("name").value;
-  let phone = document.getElementById("phone").value;
-  let address = document.getElementById("address").value;
-  let order = document.getElementById("order").value;
+const menu = [
+{name:"Chicken Biryani", price:15, img:"https://i.imgur.com/1t8c7xe.jpg"},
+{name:"Mutton Biryani", price:22.5, img:"https://i.imgur.com/0Y7bG2l.jpg"},
+{name:"Naan", price:2, img:"https://i.imgur.com/EX3Rxkg.jpg"},
+{name:"Pepsi", price:3.5, img:"https://i.imgur.com/NK6ZpBf.jpg"},
+{name:"Mirinda", price:3.5, img:"https://i.imgur.com/3R7ftsw.jpg"},
+{name:"Mountain Dew", price:3.5, img:"https://i.imgur.com/0r2aR2m.jpg"},
+{name:"Coca Cola", price:3.5, img:"https://i.imgur.com/qY5n6gB.jpg"},
+{name:"Sprite", price:3.5, img:"https://i.imgur.com/2uJgQvH.jpg"},
+{name:"Butter Chicken", price:21, img:"https://i.imgur.com/UXwXG0b.jpg"},
+{name:"Fish Fry", price:12, img:"https://i.imgur.com/9Q1D1yA.jpg"},
+{name:"Fish Curry", price:13, img:"https://i.imgur.com/IW0Jt4E.jpg"},
+{name:"Fried Chicken with French Fries", price:18, img:"https://i.imgur.com/jeO1DQp.jpg"},
+{name:"Tandoori Chicken Half", price:22, img:"https://i.imgur.com/FH8eYfU.jpg"},
+{name:"Tandoori Chicken Full", price:40, img:"https://i.imgur.com/0dPvnkS.jpg"},
+{name:"White Rice", price:4, img:"https://i.imgur.com/bRtD7k3.jpg"}
+];
 
-  let message =
-    "🍽️ New Order%0A%0A" +
-    "Name: " + name + "%0A" +
-    "Phone: " + phone + "%0A" +
-    "Address: " + address + "%0A%0A" +
-    "Order & Payment:%0A" + order;
-
-  window.open("https://wa.me/971566514365?text=" + message, "_blank");
+let cart=[];
+function displayMenu(){
+const menuContainer=document.getElementById("menuContainer");
+menu.forEach((item,index)=>{
+const div=document.createElement("div");
+div.className="menu-item";
+div.innerHTML=`<img src="${item.img}" alt="${item.name}"><h3>${item.name}</h3><p>AED ${item.price}</p><button onclick="addToCart(${index})">Add to Cart</button>`;
+menuContainer.appendChild(div);
+});
 }
+function addToCart(index){cart.push(menu[index]); displayCart();}
+function displayCart(){
+const cartContainer=document.getElementById("cartItems");
+cartContainer.innerHTML='';
+let total=0;
+cart.forEach(item=>{total+=item.price; const div=document.createElement("div"); div.className="cart-item"; div.textContent=`${item.name} - AED ${item.price}`; cartContainer.appendChild(div);});
+document.getElementById("total").textContent=total.toFixed(2);
+}
+document.getElementById("placeOrder").addEventListener("click",()=>{
+const name=document.getElementById("name").value;
+const address=document.getElementById("address").value;
+const phone=document.getElementById("phone").value;
+const payment=document.getElementById("payment").value;
+if(!name||!address||!phone){alert("Please fill all fields!"); return;}
+let message=`Order from ${name}%0AAddress: ${address}%0APhone: ${phone}%0APayment: ${payment}%0AOrder:%0A`;
+cart.forEach(item=>{message+=`${item.name} - AED ${item.price}%0A`;});
+message+=`Total: AED ${cart.reduce((sum,i)=>sum+i.price,0).toFixed(2)}`;
+const whatsappNumber="0566514365";
+window.open(`https://wa.me/${whatsappNumber}?text=${message}`,"_blank");
+});
+displayMenu();
 </script>
-
 </body>
 </html>
