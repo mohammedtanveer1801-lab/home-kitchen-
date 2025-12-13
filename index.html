@@ -2,149 +2,53 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aisha's Kitchen</title>
-  <style>
-    body{font-family:Arial,sans-serif;margin:0;background:#fff8f0;color:#333;}
-    header{background:#7a1f1f;color:white;padding:15px;text-align:center;position:relative;}
-    header h1{margin:0;font-size:26px;}
-    header p{margin:5px;font-size:14px;}
-    #banner{width:100%;height:220px;object-fit:cover;}  
-    .menu{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;padding:20px;}
-    .card{background:#fff;border-radius:12px;padding:10px;text-align:center;box-shadow:0 2px 6px rgba(0,0,0,.1);transition:transform 0.2s;}
-    .card:hover{transform:translateY(-5px);}
-    .card img{width:100%;height:150px;object-fit:cover;border-radius:10px;}
-    .card button{background:#7a1f1f;color:white;border:none;padding:8px 12px;border-radius:6px;cursor:pointer;}
-    #cartBtn{position:fixed;bottom:15px;right:15px;background:#7a1f1f;color:white;padding:12px 18px;border-radius:30px;font-weight:bold;box-shadow:0 4px 8px rgba(0,0,0,.2);cursor:pointer;z-index:100;}
-    #cartPage{display:none;padding:20px;max-width:520px;margin:auto;background:#fff;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.2);}
-    .cart-item{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
-    .qty button{padding:2px 6px;margin:0 4px;}
-    input, select, textarea{width:100%;padding:8px;margin-bottom:10px;border-radius:6px;border:1px solid #ccc;}
-    .order-btn{background:#1e7f2d;color:white;border:none;padding:12px;width:100%;border-radius:8px;font-size:16px;cursor:pointer;}
-    .back{text-align:center;margin-bottom:15px;color:#7a1f1f;cursor:pointer;}
-  </style>
+  <title>Bangladeshi Home Kitchen</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <header>
-    <h1>Aisha’s Kitchen</h1>
-    <p>✅ Free Delivery • ⏱ 30–45 Minutes</p>
-  </header>
+<header>
+  <h1>🍽️ Bangladeshi Home Kitchen</h1>
+  <p>⏱️ Delivery Time: 30–45 Minutes</p>
+  <a class="cart-btn" href="cart.html">🛒 Cart (<span id="cartCount">0</span>)</a>
+</header>
 
-  <img id="banner" src="https://cdn.pixabay.com/photo/2017/02/18/23/21/biryani-2071504_1280.jpg" alt="Food Banner">
+<div class="menu">
 
-  <div class="menu" id="menu"></div>
-
-  <div id="cartBtn" onclick="openCart()">🛒 Cart (<span id="cartCount">0</span>)</div>
-
-  <div id="cartPage">
-    <div class="back" onclick="closeCart()">← Back to Menu</div>
-    <h2>Your Cart</h2>
-    <div id="cartItems"></div>
-    <p><b>Total: AED <span id="total">0</span></b></p>
-    <textarea id="notes" placeholder="Special instructions (optional)"></textarea>
-    <input id="name" placeholder="Your Name">
-    <input id="address" placeholder="Delivery Address">
-    <input id="phone" placeholder="Phone Number">
-    <select id="payment">
-      <option>Cash on Delivery</option>
-      <option>Card on Delivery</option>
-    </select>
-    <button class="order-btn" onclick="sendOrder()">Place Order</button>
+  <div class="item">
+    <img src="https://images.unsplash.com/photo-1604908177522-429a3e9db2a4" />
+    <h3>Chicken Biryani</h3>
+    <p>Fragrant basmati rice cooked with tender chicken & spices.</p>
+    <b>15 AED</b>
+    <button onclick="addToCart('Chicken Biryani',15)">Add to Cart</button>
   </div>
 
-  <script>
-    const menu = [
-      {name:"Chicken Biryani", price:15, img:"https://cdn.pixabay.com/photo/2019/08/24/19/02/chicken-biryani-4428392_1280.jpg"},
-      {name:"Mutton Biryani", price:22.5, img:"https://cdn.pixabay.com/photo/2016/12/06/09/31/biryani-1889289_1280.jpg"},
-      {name:"Duck Curry", price:25, img:"https://cdn.pixabay.com/photo/2020/08/03/18/07/curry-5466784_1280.jpg"},
-      {name:"Naan", price:2, img:"https://cdn.pixabay.com/photo/2016/03/24/11/05/naan-1272153_1280.jpg"},
-      {name:"Pepsi", price:3.5, img:"https://cdn.pixabay.com/photo/2017/09/27/18/08/pepsi-2793642_1280.jpg"},
-      {name:"Mirinda", price:3.5, img:"https://cdn.pixabay.com/photo/2014/05/21/16/22/can-349743_1280.jpg"},
-      {name:"Mountain Dew", price:3.5, img:"https://cdn.pixabay.com/photo/2017/09/27/18/08/pepsi-2793642_1280.jpg"},
-      {name:"Coca Cola", price:3.5, img:"https://cdn.pixabay.com/photo/2017/09/27/18/09/cola-2793644_1280.jpg"},
-      {name:"Sprite", price:3.5, img:"https://cdn.pixabay.com/photo/2016/11/18/22/00/drink-1839468_1280.jpg"},
-      {name:"Butter Chicken", price:21, img:"https://cdn.pixabay.com/photo/2017/07/16/10/23/indian-food-2510897_1280.jpg"},
-      {name:"Fish Fry", price:12, img:"https://cdn.pixabay.com/photo/2016/03/05/19/02/fish-attributes-1239421_1280.jpg"},
-      {name:"Fish Curry", price:13, img:"https://cdn.pixabay.com/photo/2018/10/18/20/49/curry-3751496_1280.jpg"},
-      {name:"Fried Chicken & Fries", price:18, img:"https://cdn.pixabay.com/photo/2015/03/26/09/54/fried-chicken-690172_1280.jpg"},
-      {name:"Tandoori Chicken Half", price:22, img:"https://cdn.pixabay.com/photo/2016/03/05/22/55/tandoori-chicken-1239612_1280.jpg"},
-      {name:"Tandoori Chicken Full", price:40, img:"https://cdn.pixabay.com/photo/2017/02/01/14/11/restaurant-2029519_1280.jpg"},
-      {name:"White Rice", price:4, img:"https://cdn.pixabay.com/photo/2017/11/03/15/20/rice-2915573_1280.jpg"}
-    ];
+  <div class="item">
+    <img src="https://images.unsplash.com/photo-1627662056594-3c77b7cfc6b2" />
+    <h3>Butter Chicken</h3>
+    <p>Creamy tomato gravy with juicy chicken pieces.</p>
+    <b>20 AED</b>
+    <button onclick="addToCart('Butter Chicken',20)">Add to Cart</button>
+  </div>
 
-    let cart = [];
+  <div class="item">
+    <img src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7" />
+    <h3>Chicken Korma</h3>
+    <p>Rich, mildly spiced curry with yogurt & nuts.</p>
+    <b>20 AED</b>
+    <button onclick="addToCart('Chicken Korma',20)">Add to Cart</button>
+  </div>
 
-    const menuDiv = document.getElementById("menu");
-    menu.forEach((item, i) => {
-      menuDiv.innerHTML += `
-        <div class="card">
-          <img src="${item.img}" alt="${item.name}">
-          <h3>${item.name}</h3>
-          <p>AED ${item.price}</p>
-          <button onclick="add(${i})">Add to Cart</button>
-        </div>
-      `;
-    });
+  <div class="item">
+    <img src="https://images.unsplash.com/photo-1628294895950-9805252327bc" />
+    <h3>Duck Curry</h3>
+    <p>Traditional Bangladeshi spicy duck curry.</p>
+    <b>25 AED</b>
+    <button onclick="addToCart('Duck Curry',25)">Add to Cart</button>
+  </div>
 
-    function add(i){
-      let f = cart.find(x => x.name === menu[i].name);
-      f ? f.qty++ : cart.push({...menu[i], qty:1});
-      update();
-    }
+</div>
 
-    function update(){
-      let html = "", total=0, count=0;
-      cart.forEach((i, idx) => {
-        total += i.price * i.qty;
-        count += i.qty;
-        html += `
-          <div class="cart-item">
-            ${i.name}
-            <div class="qty">
-              <button onclick="chg(${idx},-1)">−</button>
-              ${i.qty}
-              <button onclick="chg(${idx},1)">+</button>
-              <button onclick="rm(${idx})">❌</button>
-            </div>
-          </div>`;
-      });
-      document.getElementById("cartItems").innerHTML = html || "<p>Cart is empty</p>";
-      document.getElementById("total").innerText = total.toFixed(2);
-      document.getElementById("cartCount").innerText = count;
-    }
-
-    function chg(i, v){
-      cart[i].qty += v;
-      if(cart[i].qty <= 0) cart.splice(i,1);
-      update();
-    }
-    function rm(i){ cart.splice(i,1); update(); }
-
-    function openCart(){
-      document.querySelector(".menu").style.display = "none";
-      document.getElementById("cartBtn").style.display = "none";
-      document.getElementById("cartPage").style.display = "block";
-    }
-    function closeCart(){
-      document.querySelector(".menu").style.display = "grid";
-      document.getElementById("cartBtn").style.display = "block";
-      document.getElementById("cartPage").style.display = "none";
-    }
-
-    function sendOrder(){
-      if(cart.length == 0){ alert("Cart is empty"); return; }
-      let name = document.getElementById("name").value;
-      let address = document.getElementById("address").value;
-      let phone = document.getElementById("phone").value;
-      let payment = document.getElementById("payment").value;
-      let notes = document.getElementById("notes").value;
-      if(!name || !address || !phone){ alert("Please fill all details"); return; }
-      let msg = `Order from ${name}%0AAddress: ${address}%0APhone: ${phone}%0APayment: ${payment}%0ANotes: ${notes}%0A%0A`;
-      cart.forEach(i => msg += `${i.name} x${i.qty} - AED ${i.price*i.qty}%0A`);
-      msg += `Total: AED ${document.getElementById("total").innerText}`;
-      window.open("https://wa.me/971566514365?text="+encodeURIComponent(msg), "_blank");
-    }
-  </script>
+<script src="script.js"></script>
 </body>
 </html>
